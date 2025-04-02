@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { MortgageApplication, RequiredFieldsResponse } from '../types/MortgageTypes';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+const API_URL = 'https://user:38e5708e6054f85e48a55636a6614031@mortgage-app-website-tunnel-6ora91nu.devinapps.com/api';
 
 const api = axios.create({
   baseURL: API_URL,

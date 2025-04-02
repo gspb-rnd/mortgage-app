@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { MortgageApplication, PropertyType, LoanTerm, EmploymentStatus, LoanType } from '../types/MortgageTypes';
+import { useForm } from 'react-hook-form';
+import { MortgageApplication } from '../types/MortgageTypes';
 import { createMortgageApplication, updateMortgageApplication, getRequiredFields } from '../services/api';
 
 interface MortgageFormProps {
@@ -14,7 +14,7 @@ const MortgageForm: React.FC<MortgageFormProps> = ({ initialData, applicationId,
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasCoBorrower, setHasCoBorrower] = useState(initialData?.coBorrowerInfo !== undefined);
 
-  const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<MortgageApplication>({
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<MortgageApplication>({
     defaultValues: initialData || {
       loanAmount: 0,
       interestRate: 0,
