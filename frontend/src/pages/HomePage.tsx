@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { MortgageApplication } from '../types/MortgageTypes';
 
-const API_URL = 'https://user:38e5708e6054f85e48a55636a6614031@mortgage-app-website-tunnel-6ora91nu.devinapps.com/api';
+const API_URL = 'http://localhost:8080/api';
 
 const HomePage: React.FC = () => {
   const [applications, setApplications] = useState<MortgageApplication[]>([]);
