@@ -14,12 +14,27 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.mongodb:mongodb-driver-sync:4.6.1'
+    implementation 'org.mongodb:bson:4.6.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {
     useJUnitPlatform()
+    
+    // Pass environment variables to tests
+    environment "MongoConnectionString", System.getenv("MongoConnectionString")
+    environment "MongoUser", System.getenv("MongoUser")
+    environment "MongoPassword", System.getenv("MongoPassword")
+    
+    // Show standard streams
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        showExceptions true
+        showCauses true
+        showStackTraces true
+        exceptionFormat "full"
+    }
 }
